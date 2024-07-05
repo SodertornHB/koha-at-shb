@@ -121,7 +121,27 @@ Follow these steps to set up your environment, create a Personal Access Token (P
      - **Password**: Your MySQL password.
      - **Database**: The database you want to connect to.
    - Save the connection.
+   - Note that in the .vscode folder you need to have a file `settings.json`. This file is ignored by git so not to push password to repo. 
 
+   ```
+   {
+    "sqltools.connections": [
+         {
+               "mysqlOptions": {
+                  "authProtocol": "default",
+                  "enableSsl": "Disabled"
+               },
+               "previewLimit": 50,
+               "server": "127.0.0.1",
+               "port": 3306,
+               "driver": "MariaDB",
+               "name": "Koha prod",
+               "database": "kosodertorn",
+               "username": "kosodertorn",
+               "password": "<add_secret_password_here>"
+         }
+      ]
+   }
 ### Step 3: Execute SQL Queries
 
 1. **Connect to the Database**:
