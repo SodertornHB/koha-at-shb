@@ -12,6 +12,8 @@ Here we store sql queries to use with Koha
 
 Nothing here yet 
 
+# Setup
+
 ## Getting data from Github
 
 ### Prerequisit: Install Git
@@ -19,7 +21,7 @@ Nothing here yet
 1. Download Git for Windows from [git-scm.com](https://git-scm.com/download/win).
 2. Run the installer and follow the on-screen instructions. Make sure to select "Use Git from the Windows Command Prompt" during the installation.
 
-## Clone repository 
+### Clone repository 
 
 `git clone https://github.com/SodertornHB/koha-at-shb.git` 
 
@@ -79,8 +81,7 @@ Follow these steps to set up your environment, create a Personal Access Token (P
    git add .
    git commit -m "Your commit message"
    git push origin main
-
-   ## Executing SQL Queries from VS Code After Initiating a Tunnel Using PuTTY
+## Executing SQL Queries from VS Code After Initiating a Tunnel Using PuTTY
 
 ### Step 1: Set Up the SSH Tunnel with PuTTY
 
@@ -123,7 +124,7 @@ Follow these steps to set up your environment, create a Personal Access Token (P
    - Save the connection.
    - Note that in the .vscode folder you need to have a file `settings.json`. This file is ignored by git so not to push password to repo. 
 
-   ```
+   ```json
    {
     "sqltools.connections": [
          {
