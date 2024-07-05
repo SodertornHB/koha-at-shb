@@ -79,3 +79,63 @@ Follow these steps to set up your environment, create a Personal Access Token (P
    git add .
    git commit -m "Your commit message"
    git push origin main
+
+   ## Executing SQL Queries from VS Code After Initiating a Tunnel Using PuTTY
+
+### Step 1: Set Up the SSH Tunnel with PuTTY
+
+1. **Download and Install PuTTY**:
+   - Download PuTTY from [putty.org](https://www.putty.org/).
+   - Install PuTTY by following the on-screen instructions.
+
+2. **Configure PuTTY for SSH Tunneling**:
+   - Open PuTTY.
+   - In the **Session** section, enter your remote server's IP address (e.g., `182.115.149.1`) and port (e.g., `5023`).
+   - In the **Connection > SSH > Auth** section, click **Browse** and select your private key file (`stefan-new-private-key.ppk`).
+   - In the **Connection > SSH > Tunnels** section:
+     - For **Source port**, enter `3306`.
+     - For **Destination**, enter `192.168.196.198:3306`.
+     - Click **Add**.
+     - Repeat for any additional ports if necessary.
+     - Example: For **Source port** `6001`, **Destination** `localhost:6001`, click **Add**.
+   - Go back to the **Session** section and save the session by entering a name under **Saved Sessions** and clicking **Save**.
+   - Click **Open** to initiate the tunnel.
+
+### Step 2: Set Up VS Code to Execute SQL Queries
+
+1. **Install SQLTools Extension**:
+   - Open Visual Studio Code.
+   - Go to the Extensions view (`Ctrl+Shift+X`).
+   - Search for "SQLTools" and install it.
+   - You may also need the "SQLTools MySQL/MariaDB" driver extension. Install it as well.
+
+2. **Configure SQLTools**:
+   - Open the Command Palette (`Ctrl+Shift+P`).
+   - Type `SQLTools: Add New Connection` and select it.
+   - Fill in the connection details:
+     - **Connection Name**: Any name you prefer.
+     - **Driver**: MySQL/MariaDB.
+     - **Server**: `127.0.0.1`.
+     - **Port**: `3306`.
+     - **Username**: Your MySQL username.
+     - **Password**: Your MySQL password.
+     - **Database**: The database you want to connect to.
+   - Save the connection.
+
+### Step 3: Execute SQL Queries
+
+1. **Connect to the Database**:
+   - Open the SQLTools extension side panel by clicking on the database icon in the Activity Bar.
+   - Find your configured connection and click on the connect icon.
+
+2. **Run SQL Queries**:
+   - Open a new SQL file in VS Code (`Ctrl+N` and save it with a `.sql` extension).
+   - Write your SQL queries in the file.
+   - Select the queries you want to run and use the Command Palette (`Ctrl+Shift+P`) to execute them by choosing `SQLTools: Execute Query`.
+
+### Additional Notes
+
+- Ensure that your SSH tunnel is active while executing the SQL queries.
+- If you encounter any connection issues, verify that your SSH tunnel configuration and SQLTools settings are correct.
+- This setup allows you to leverage the flexibility of VS Code for writing and executing SQL queries on a remote MySQL database securely.
+
